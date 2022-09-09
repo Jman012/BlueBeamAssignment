@@ -6,7 +6,7 @@ import (
 	"os"
 )
 
-func Interleave(file1Path string, file2Path string, writer bufio.Writer) {
+func Interleave(file1Path string, file2Path string, writer *bufio.Writer) {
 
 	file1, err := os.Open(file1Path)
 	if err != nil {
@@ -31,7 +31,7 @@ func Interleave(file1Path string, file2Path string, writer bufio.Writer) {
 	interleaveScanners(scanner1, scanner2, writer)
 }
 
-func interleaveScanners(scanner1 *bufio.Scanner, scanner2 *bufio.Scanner, writer bufio.Writer) {
+func interleaveScanners(scanner1 *bufio.Scanner, scanner2 *bufio.Scanner, writer *bufio.Writer) {
 	wrote1, wrote2 := false, false
 	for {
 		wrote1 = false
@@ -54,6 +54,5 @@ func interleaveScanners(scanner1 *bufio.Scanner, scanner2 *bufio.Scanner, writer
 		}
 	}
 
-	writer.WriteString("\n")
 	writer.Flush()
 }

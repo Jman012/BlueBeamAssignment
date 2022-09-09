@@ -3,6 +3,7 @@ package main
 import (
 	"bufio"
 	"flag"
+	"fmt"
 	"os"
 )
 
@@ -13,9 +14,11 @@ func main() {
 	flag.Parse()
 
 	if len(*file1) == 0 || len(*file2) == 0 {
+		fmt.Println("Usage:")
 		flag.PrintDefaults()
 		os.Exit(1)
 	}
 
-	Interleave(*file1, *file2, *bufio.NewWriter(os.Stdout))
+	Interleave(*file1, *file2, bufio.NewWriter(os.Stdout))
+	fmt.Println()
 }
