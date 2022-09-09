@@ -46,6 +46,9 @@ func interleaveScanners(scanner1 *bufio.Scanner, scanner2 *bufio.Scanner, writer
 	spacedWordWriter := NewSpacedWordWriter(writer)
 	// Flags to keep track of when we should break the loop.
 	wrote1, wrote2 := false, false
+
+	// For each loop, write a word from each scanner. If neither produced words, then
+	// break the loop and end as each scanner is complete.
 	for {
 		wrote1 = false
 		wrote2 = false
